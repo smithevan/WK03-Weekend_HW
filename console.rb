@@ -104,7 +104,7 @@ ticket3 = Ticket.new({
 ticket4 = Ticket.new({
   "customer_id" => customer3.id,
   "films_id" => film1.id,
-  "screening_id" => screening1.id
+  "screening_id" => screening4.id
   })
 
 ticket5 = Ticket.new({

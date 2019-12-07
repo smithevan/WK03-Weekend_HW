@@ -1,4 +1,6 @@
 require_relative("../db/sql_runner")
+require_relative("screening")
+
 
 class Film
 
@@ -76,12 +78,14 @@ class Film
   end
 
   def most_popular()
-    sql = "SELECT tickets.screening_id FROM tickets
-          WHERE films_id = $1"
+    sql = "SELECT screenings.* from screenings
+           INNER JOIN tickets ON tickets.screening_id = screenings.id
+           Where film_id = $1"
     values = [@id]
     results = SqlRunner.run(sql, values)
-    shows = results.map { |ticket_hash| ticket_hash["screening_id"].to_i}
-    largest_screening_id = shows.max_by { |i| shows.count(i) }
+    shows = results.map { |hash| Screening.new(hash)}
+    shows.max_by {|hash| shows.count(hash)}
+
 
   end
 
