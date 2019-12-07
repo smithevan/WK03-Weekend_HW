@@ -11,10 +11,16 @@ Film.delete_all()
 
 customer1 = Customer.new({
   "name" => "Jim",
-  "funds" => 1000
+  "funds" => 100
+  })
+
+customer2 = Customer.new({
+  "name" => "Robert",
+  "funds" => 50
   })
 
 customer1.save()
+customer2.save()
 
 film1 = Film.new({
   "title" => "Avengers",
