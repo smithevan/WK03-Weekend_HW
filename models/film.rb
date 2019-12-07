@@ -67,6 +67,14 @@ class Film
     return results.count
   end
 
+  def showtimes()
+    sql = "SELECT screenings.* from screenings
+          WHERE films_id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    return results.map{ |showtime_hash| Screening.new(showtime_hash)}
+  end
+
 
 
 
