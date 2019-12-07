@@ -58,7 +58,7 @@ class Film
     return results.map{ |customer_hash| Customer.new(customer_hash)}
   end
 
-  def audience()
+  def audience_number()
     sql = "SELECT customers.* from customers
           INNER JOIN tickets on tickets.customer_id = customers.id
           WHERE films_id = $1;"
