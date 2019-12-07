@@ -66,7 +66,7 @@ class Customer
           WHERE customer_id = $1;"
     values = [@id]
     results = SqlRunner.run(sql, values)
-    return results.count 
+    return results.count
   end
 
 

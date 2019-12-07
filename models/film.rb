@@ -69,18 +69,20 @@ class Film
 
   def showtimes()
     sql = "SELECT screenings.* from screenings
-          WHERE films_id = $1"
+          WHERE film_id = $1"
     values = [@id]
     results = SqlRunner.run(sql, values)
     return results.map{ |showtime_hash| Screening.new(showtime_hash)}
   end
 
   def most_popular()
-    sql = "SELECT screenings.time from screenings
+    sql = "SELECT tickets.screening_id FROM tickets
           WHERE films_id = $1"
     values = [@id]
     results = SqlRunner.run(sql, values)
-    return results 
+    shows = results.map { |ticket_hash| ticket_hash["screening_id"].to_i}
+    largest_screening_id = shows.max_by { |i| shows.count(i) }
+
   end
 
 
