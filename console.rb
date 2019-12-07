@@ -4,6 +4,8 @@ require_relative ("./models/customer")
 require_relative ("./models/film")
 require_relative ("./models/ticket")
 
+Customer.delete_all()
+
 customer1 = Customer.new({
   "name" => "Jim",
   "funds" => 1000
