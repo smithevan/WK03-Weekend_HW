@@ -11,4 +11,6 @@ class Customer
     @funds = options["funds"]
   end
 
+  
+
 end
