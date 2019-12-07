@@ -59,6 +59,20 @@ screening1 = Screening.new({
   "films_id" => film1.id
   })
 
+screening2 = Screening.new({
+  "showtime" => "19:00",
+  "films_id" => film2.id
+  })
+
+screening3 = Screening.new({
+  "showtime" => "23:00",
+  "films_id" => film3.id
+  })
+
+screening1.save()
+screening2.save()
+screening3.save()
+
 ticket1 = Ticket.new({
   "customer_id" => customer1.id,
   "films_id" => film1.id

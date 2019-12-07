@@ -34,4 +34,10 @@ class Screening
     return results.map { |screening_hash| Screening.new(screening_hash)}
   end
 
+  def update()
+    sql = "UPDATE screenings SET (showtime, films_id) = ($1, $2) WHERE id = $3"
+    values = [@showtime, @films_id, @id]
+    SqlRunner.run(sql, values)
+  end
+
 end
