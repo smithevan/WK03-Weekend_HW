@@ -15,14 +15,15 @@ CREATE TABLE films (
   price INT
 );
 
-CREATE TABLE tickets (
-  id SERIAL PRIMARY KEY,
-  customer_id INT NOT NULL REFERENCES customers(id) ON DELETE CASCADE,
-  films_id INT NOT NULL REFERENCES films(id) ON DELETE CASCADE
-);
-
 CREATE TABLE screenings (
   id SERIAL PRIMARY KEY,
   showtime VARCHAR(255),
   films_id INT NOT NULL REFERENCES films(id) ON DELETE CASCADE
+);
+
+CREATE TABLE tickets (
+  id SERIAL PRIMARY KEY,
+  customer_id INT NOT NULL REFERENCES customers(id) ON DELETE CASCADE,
+  films_id INT NOT NULL REFERENCES films(id) ON DELETE CASCADE,
+  screening_id INT NOT NULL REFERENCES screenings(id) ON DELETE CASCADE
 );

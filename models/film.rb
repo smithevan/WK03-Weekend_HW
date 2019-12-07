@@ -75,6 +75,14 @@ class Film
     return results.map{ |showtime_hash| Screening.new(showtime_hash)}
   end
 
+  def most_popular()
+    sql = "SELECT screenings.time from screenings
+          WHERE films_id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    return results 
+  end
+
 
 
 
