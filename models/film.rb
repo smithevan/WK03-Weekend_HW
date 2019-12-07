@@ -58,7 +58,16 @@ class Film
     return results.map{ |customer_hash| Customer.new(customer_hash)}
   end
 
-  
+  def audience()
+    sql = "SELECT customers.* from customers
+          INNER JOIN tickets on tickets.customer_id = customers.id
+          WHERE films_id = $1;"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    return results.count
+  end
+
+
 
 
 
