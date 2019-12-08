@@ -57,7 +57,18 @@ class Customer
     result = SqlRunner.run(sql,values)
     price_array = result.map {|hash| hash['price'].to_i}
     price = price_array.sum
-    @funds -= price
+    # sql2 = "SELECT customers.* from customers
+    #         INNER JOIN tickets on tickets.customer_id = customers.id
+    #         WHERE films_id = $1;"
+    # values2 = [@id]
+    # result2 = SqlRunner.run(sql2, values2)
+    # capacity_array = result2.map {|hash| Ticket.new(hash)['id'].to_i}
+    # patrons = capacity_array.sum
+    # if patrons >= 80
+    #   return "Sorry Sold Out"
+    # else
+      return @funds -= price
+    # end
   end
 
   def tickets()
