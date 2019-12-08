@@ -84,9 +84,7 @@ class Film
     values = [@id]
     results = SqlRunner.run(sql, values)
     shows = results.map { |hash| Screening.new(hash)}
-    shows.max_by {|hash| shows.count(hash)}
-
-
+    shows.max {|hash| shows.count(hash)}
   end
 
 
